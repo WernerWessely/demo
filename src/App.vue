@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <v-tabs fixed-tabs v-model="tabs">
       <v-tab :href="'#tab-parameters'">
         Parameters
@@ -15,7 +14,7 @@
     <v-content>
       <v-tabs-items v-model="tabs">
         <v-tab-item :value="'tab-parameters'">
-          Parameters
+          <Parameters></Parameters>
         </v-tab-item>
         <v-tab-item  :value="'tab-results'">
           Results
@@ -23,7 +22,7 @@
       </v-tabs-items>
     </v-content>
 
-    <v-toolbar height='70'>
+    <v-toolbar prominent>
       <v-btn color='primary'>
       Simulate
       <v-icon right>play_circle_outline</v-icon>
@@ -42,12 +41,13 @@
 </template>
 
 <script>
-import ValueSlider from './components/ValueSlider'
+
+import Parameters from './components/Parameters'
 
 export default {
   name: 'App',
   components: {
-    ValueSlider
+    Parameters
   },
   data () {
     return {
