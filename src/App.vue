@@ -1,37 +1,43 @@
 <template>
   <v-app>
+
+    <v-tabs fixed-tabs v-model="tabs">
+      <v-tab :href="'#tab-parameters'">
+        Parameters
+        <v-icon size='22' right>create</v-icon>
+      </v-tab>
+      <v-tab :href="'#tab-results'">
+        Results
+        <v-icon size='25' right>bar_chart</v-icon>
+      </v-tab>
+    </v-tabs>
+
     <v-content>
-        <v-container grid-list-md>
-          <v-layout>
-            <v-flex md6>
-              <v-card>
-                <v-card-text>
-                  <ValueSlider :data="error_budget.muzzle_v"></ValueSlider>
-                  <ValueSlider :data="error_budget.grenade_m"></ValueSlider>
-                  <ValueSlider :data="error_budget.init_attack_angle"></ValueSlider>
-                  <ValueSlider :data="error_budget.cross_wind_speed"></ValueSlider>
-                  <ValueSlider :data="error_budget.trigger_error"></ValueSlider>
-                  <ValueSlider :data="error_budget.sighting_error"></ValueSlider>
-                  <ValueSlider :data="error_budget.shaking_error"></ValueSlider>
-                  <ValueSlider :data="error_budget.elevation_error"></ValueSlider>
-                  <ValueSlider :data="error_budget.fuze_error"></ValueSlider>
-                  <v-btn color="primary" dark>
-                    Simulate
-                    <v-icon right dark>play_circle_outline</v-icon>
-                  </v-btn>
-              </v-card-text>
-              </v-card>
-            </v-flex>
-            <v-flex md6>
-              <v-card>
-                <v-card-text>
-                Doodly
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
+      <v-tabs-items v-model="tabs">
+        <v-tab-item :value="'tab-parameters'">
+          Parameters
+        </v-tab-item>
+        <v-tab-item  :value="'tab-results'">
+          Results
+        </v-tab-item>
+      </v-tabs-items>
     </v-content>
+
+    <v-toolbar height='70'>
+      <v-btn color='primary'>
+      Simulate
+      <v-icon right>play_circle_outline</v-icon>
+      </v-btn>
+       <v-btn color='primary'>
+      Cancel
+      <v-icon right>cancel</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+      <!--Running
+      <v-progress-circular indeterminate color='primary' size='30'></v-progress-circular>-->
+      
+    </v-toolbar>
+
   </v-app>
 </template>
 
@@ -55,7 +61,8 @@ export default {
         shaking_error : {'name': 'Shaking error', 'init': 0.0, 'min': 0.0, 'max' : 0.1, 'unit': 'º', 'step': 0.01},
         elevation_error : {'name': 'Elevation error', 'init': 0.0, 'min': 0.0, 'max' : 0.2, 'unit': 'º', 'step': 0.01},
         fuze_error : {'name': 'Fuze error', 'init': 0.0, 'min': 0.0, 'max' : 1.0, 'unit': 'ms', 'step': 0.1}
-      }
+      },
+      tabs : 'tab-parameters'
     }
   }
 }
