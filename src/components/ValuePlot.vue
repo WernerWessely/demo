@@ -1,16 +1,13 @@
 <template>
     <v-content>
-        <Plotly :data="data" :layout="layout" :display-mode-bar="false"></Plotly>
     </v-content>
 </template>
 
 <script>
 
-import { Plotly } from 'vue-plotly'
 
 export default {
     components:{
-        Plotly
     },
     data () {
         return {

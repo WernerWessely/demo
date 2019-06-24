@@ -25,8 +25,7 @@
             <v-flex md6>
               <v-card>
                 <v-card-text>
-                  <ValuePlot></ValuePlot>
-                
+                Doodly
                 </v-card-text>
               </v-card>
             </v-flex>
@@ -38,13 +37,11 @@
 
 <script>
 import ValueSlider from './components/ValueSlider'
-import ValuePlot from './components/ValuePlot'
 
 export default {
   name: 'App',
   components: {
-    ValueSlider,
-    ValuePlot
+    ValueSlider
   },
   data () {
     return {
