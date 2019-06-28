@@ -17,7 +17,7 @@
                     <Parameters v-bind:data="parameters"></Parameters>
                 </v-tab-item>
                 <v-tab-item :value="'tab-results'">
-                    <Plot></Plot>
+                    <Results></Results>
                 </v-tab-item>
             </v-tabs-items>
         </v-content>
@@ -35,13 +35,13 @@
 
 <script>
 import Parameters from "./components/Parameters";
-import Plot from "./components/Plot";
+import Results from "./components/Results";
 
 export default {
     name: "App",
     components: {
         Parameters,
-        Plot
+        Results
     },
 
     data() {
