@@ -17,7 +17,7 @@
                     <Parameters v-bind:data="parameters"></Parameters>
                 </v-tab-item>
                 <v-tab-item :value="'tab-results'">
-                    <Results></Results>
+                    <Results v-bind:shots="shots"></Results>
                 </v-tab-item>
             </v-tabs-items>
         </v-content>
@@ -168,13 +168,16 @@ export default {
             this.shots.y.length = 0;
             this.shots.z.length = 0;
 
-            for (var i = 0; i < this.parameters.number_of_shots.current; ++i) {
-                this.shots.x.push(Math.random() * 10);
-                this.shots.y.push(Math.random() * 10);
-                this.shots.z.push(Math.random() * 10);
-            }
-
             setTimeout(() => {
+                for (
+                    var i = 0;
+                    i < this.parameters.number_of_shots.current;
+                    ++i
+                ) {
+                    this.shots.x.push(Math.random() * 10);
+                    this.shots.y.push(Math.random() * 10);
+                    this.shots.z.push(Math.random() * 10);
+                }
                 this.running = false;
                 this.tabs = "tab-results";
             }, 3000);

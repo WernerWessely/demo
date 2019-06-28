@@ -10,19 +10,15 @@
 
 <script>
 export default {
-    mounted() {
-        this.$plotly.newPlot(this.$refs["plot"], this.params, this.layout);
-
-        this.resize_plot();
-    },
+    props: ["shots"],
 
     data() {
         return {
             params: [
                 {
-                    x: [-0.100387678599, -0.841098362432],
-                    y: [0.14252201109, 0.745253687488],
-                    z: [-0.0850216981743, 0.0772495602215],
+                    x: this.shots.x,
+                    y: this.shots.y,
+                    z: this.shots.z,
                     mode: "markers",
                     marker: {
                         color: "default",
@@ -50,14 +46,33 @@ export default {
     },
 
     methods: {
-        resize_plot() {
-            var plot_div = document.getElementById("plot");
+        create_plot() {
+            this.$plotly.newPlot(this.$refs.plot, this.params, this.layout);
+        },
 
-            this.$plotly.relayout(plot_div, {
+        update_plot() {
+            this.$plotly.update(this.$refs.plot, this.params, this.layout);
+        },
+
+        resize_plot() {
+            this.$plotly.relayout(this.$refs.plot, {
                 width: window.innerWidth - 80,
                 height: window.innerHeight - 200
             });
         }
+    },
+
+    watch: {
+        shots: {
+            handler() {
+                this.update_plot();
+            },
+            deep: true
+        }
+    },
+
+    mounted() {
+        this.create_plot();
     },
 
     created() {
