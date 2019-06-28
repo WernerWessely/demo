@@ -50,6 +50,12 @@ export default {
 
             running: false,
 
+            shots: {
+                x: [],
+                y: [],
+                z: []
+            },
+
             parameters: {
                 muzzle_velocity: {
                     label: "Muzzle velocity",
