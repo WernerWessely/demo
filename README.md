@@ -1,4 +1,4 @@
-# demo
+# Demo for checking out vue and electron based gui for displaying modelling data.
 
 ## Project setup
 ```
